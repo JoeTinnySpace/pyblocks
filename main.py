@@ -38,3 +38,16 @@ def send_telegram_msg(message, chatid, bot_token):
         # get(send_text)
         print(send_text)
 
+def ordered_json(json_file_loation):
+    from json import loads, dump
+
+    with open(json_file_loation,'r+') as data:
+        dict = loads(data.read())
+        sorted_dict = {k:v for k,v in sorted(dict.items())}
+        data.seek(0)
+        data.truncate()
+        dump(sorted_dict, data, ensure_ascii=False, indent=4)
+
+
+if __name__ == '__main__':
+    print("Do not run this file")
